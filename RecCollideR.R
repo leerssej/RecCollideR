@@ -11,6 +11,7 @@ options(stringsAsFactors = FALSE)
 library(magrittr) 
 library(tidyverse)
 library(stringdist)
+library(RecordLinkage)
 
 ###### 102. Remove OverlappingConfounders and prep for final serialized sorting ######
 # reload and fuse pSimCity(ProperCased Similar City) names into rclCity(reclusterCity)
