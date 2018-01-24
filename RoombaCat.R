@@ -8,7 +8,6 @@
 library(tidyverse)
 library(magrittr)
 library(googlesheets)
-library(readxl)
 library(RecordLinkage)
 
 ###### 0. Variable Library ######
@@ -44,11 +43,10 @@ glimpse(clnt_clctn)
 org_clctn <- org_dist_trimmed # %>% arrange(org_st) %>% slice(1:10) # uncomment for dev work
 glimpse(org_clctn)
 
-blockfld = 2 
-rec_collider <- function(org_clctn, clnt_clctn, blockfld) {
+rec_collider <- function(org_clctn, clnt_clctn, blockfld = 2) {
     #crash them all into one another
     ### allowing only the district blocks to collide with one another
-    collision <- compare.linkage(clnt_clctn, org_clctn, blockfld = 2 , strcmp = T)
+    collision <- compare.linkage(clnt_clctn, org_clctn, blockfld, strcmp = T)
     collision
     # Unscramble the crash results
     collision_results <- collision$pairs %>% select_(1, 2, ling_dist = 3)
